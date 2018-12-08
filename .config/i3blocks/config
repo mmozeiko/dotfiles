@@ -1,0 +1,168 @@
+#
+# unicode icons from ttf-font-icon: http://kageurufu.net/icons.pdf
+#
+
+[cpu-icon]
+command=echo -e "\uf237"
+interval=once
+separator=false
+separator_block_width=16
+
+[cpu-usage]
+command=/usr/lib/i3blocks/cpu_usage
+interval=5
+separator=false
+separator_block_width=16
+
+# f38f f3b3
+[cpu-usage]
+command=/usr/lib/i3blocks/load_average
+interval=5
+separator_block_width=32
+
+
+[cpu-temp#icon]
+command=echo -e "\uf3b6"
+interval=once
+separator=false
+separator_block_width=16
+
+[cpu-temp]
+command=/usr/lib/i3blocks/temperature -w 50 -c 70
+interval=10
+separator_block_width=32
+
+# TODO: gpu usage/temp
+
+[memory#icon]
+command=echo -e "\uf30e"
+interval=once
+separator=false
+separator_block_width=16
+
+# TODO: show usage in percents
+[memory]
+command=/usr/lib/i3blocks/memory
+interval=1
+separator_block_width=32
+
+
+[disk#icon]
+command=echo -e "\uf3fe" # "/" # f3fe
+interval=once
+separator=false
+separator_block_width=16
+
+[disk]
+instance=/
+command=/usr/lib/i3blocks/disk
+interval=10
+separator_block_width=32
+
+# TODO: NVMe temperature - sudo nvme smart-log /dev/nvme0 | grep "^temperature"
+[public#icon]
+command=echo -e "\uf3df" # f3df
+interval=once
+separator=false
+separator_block_width=16
+
+[public]
+command=curl -sf http://ifconfig.co
+interval=once
+separator_block_width=32
+
+
+[wifi#icon]
+command=echo -e "\uf35c" # f3745
+interval=once
+separator=false
+separator_block_width=16
+
+[wifi]
+instance=wlp3s0
+command=echo "$(ip -br addr show ${BLOCK_INSTANCE} | awk '{print $3}' | cut -d/ -f1) (`iwgetid -r ${BLOCK_INSTANCE}`)"
+interval=10
+separator=false
+separator_block_width=16
+
+[wifi#bandwidth]
+instance=wlp3s0
+command=/usr/lib/i3blocks/bandwidth
+interval=1
+# up f381
+# down f37e
+separator_block_width=32
+
+# TODO: ethernet "\uf321" 
+
+# TODO: vpn "\uf2a8" "\uf2a7" "\uf300"
+
+# TODO: bluetooth "\uf216"
+
+[btc#icon]
+command=echo -e "\uf3af"
+interval=once
+separator=false
+separator_block_width=16
+
+[btc]
+command=~/.local/bin/btc.sh
+interval=300
+separator_block_width=32
+
+
+[eth#icon]
+command=echo -e "\u039E"
+interval=once
+separator=false
+separator_block_width=16
+
+[eth]
+command=~/.local/bin/eth.sh
+interval=300
+separator_block_width=32
+
+
+[pacman]
+command=echo "pkg `checkupdates | wc -l`"
+interval=3600
+separator_block_width=32
+
+
+# charging: \uf211
+# empty: \uf212
+# full: \uf213
+# almost full: \uf214
+# almost empty: \uf215
+[battery#icon]
+command=echo -e "\uf214"
+interval=once
+separator=false
+separator_block_width=16
+
+[battery]
+command=/usr/lib/i3blocks/battery
+interval=60
+separator_block_width=32
+
+
+# max = f357
+# mid = f359
+# min = f358
+# muted = f35a
+[audio#icon]
+command=echo -e "\uf2b5"
+interval=once
+separator=false
+separator_block_width=16
+
+[audio]
+command=ponymix is-muted && echo "muted" || ponymix get-volume
+interval=1
+separator_block_width=32
+
+
+[clock]
+command=date +"%a, %b %d %Y %H:%M:%S"
+interval=1
+
