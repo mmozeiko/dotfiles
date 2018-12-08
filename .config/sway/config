@@ -1,0 +1,167 @@
+#
+
+set $mod Mod4
+
+font "PxPlus IBM VGA8" 12
+
+output * bg #000000 solid_color
+
+# swaymsg -t get_outputs
+output "eDP-1" {
+  #resolution 1920x1080
+  resolution 2560x1440
+  scale 1.25
+}
+
+# swaymsg -t get_inputs
+input "1:1:AT_Translated_Set_2_keyboard" {
+  xkb_layout lv
+}
+
+input "2:14:ETPS/2_Elantech_Touchpad" {
+  dwt enabled
+  tap disabled
+  natural_scroll disabled
+  middle_emulation enabled
+}
+
+floating_modifier $mod normal
+default_border pixel 1
+default_floating_border pixel 1
+focus_follows_mouse no
+
+bindsym $mod+Return exec termite
+
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r reload
+
+bindsym $mod+f fullscreen
+
+for_window [app_id="^launcher$"] floating enable, border none
+bindsym $mod+d exec j4-dmenu-desktop --no-generic
+bindsym $mod+Shift+d exec rofi -show run
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+c focus child
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+mode "resize" {
+  bindsym Left resize shrink width 10px
+  bindsym Down resize grow height 10px
+  bindsym Up resize shrink height 10px
+  bindsym Right resize grow width 10px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (Shift+r)eboot, (Shift+s)hutdown
+set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (Shift+r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+  bindsym l       exec ~/.local/bin/lock, mode "default"
+  bindsym e       exec swaymsg exit, mode "default"
+ #bindsym u       exec dm-tool switch-to-greeter, mode "default"
+  bindsym s       exec systemctl hybrid-sleep, mode "default"
+  bindsym h       exec systemctl hibernate, mode "default"
+  bindsym Shift+r exec systemctl reboot, mode "default"
+  bindsym Shift+s exec systemctl poweroff, mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "$mode_system"
+
+bar {
+  position bottom
+  font PxPlus IBM VGA8, Icons 12
+
+  status_command i3blocks
+
+  bindsym button4 nop
+  bindsym button5 nop
+
+#  colors {
+#    statusline #ffffff
+#    background #323232
+#    inactive_workspace #32323200 #32323200 #5c5c5c
+#  }
+}
+
+bindsym XF86AudioMute exec ponymix toggle
+bindsym XF86AudioRaiseVolume exec ponymix increase 10
+bindsym XF86AudioLowerVolume exec ponymix decrease 10
+#bindsym XF86AudioNext exec cmus-remote --next
+#bindsym XF86AudioPrev exec cmus-remote --prev
+#bindsym XF86AudioPause exec cmus-remote --pause
+#bindsym XF86AudioPlay exec cmus-remote --pause
+
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+bindsym Ctrl+Space exec makoctl dismiss
+bindsym Ctrl+Shift+Space exec makoctl dismiss --all
+
+# TODO - grim, wlstream
+#bindsym Print exec scrot -e 'mv $f ~/'
+
+exec mako --font "PxPlus IBM VGA8 12" --width 500 --height 400 --padding 10 --format "%a - %s\n\n%b" --default-timeout 10000
+exec pulseaudio --start
+exec udiskie -a
+#exec blueman-applet
+exec google-chrome-stable --no-startup-window
+
+#exec swayidle \
+#    timeout 300 'swaylock -c 000000' \
+#    timeout 600 'swaymsg "output * dpms off"' \
+#       resume 'swaymsg "output * dpms on"' \
+#    before-sleep 'swaylock -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
