@@ -8,7 +8,6 @@ output * bg #000000 solid_color
 
 # swaymsg -t get_outputs
 output "eDP-1" {
-  #resolution 1920x1080
   resolution 2560x1440
   scale 1.25
 }
@@ -17,7 +16,6 @@ output "eDP-1" {
 input "1:1:AT_Translated_Set_2_keyboard" {
   xkb_layout lv
 }
-
 input "2:14:ETPS/2_Elantech_Touchpad" {
   dwt enabled
   tap disabled
@@ -37,7 +35,6 @@ bindsym $mod+Shift+r reload
 
 bindsym $mod+f fullscreen
 
-for_window [app_id="^launcher$"] floating enable, border none
 bindsym $mod+d exec j4-dmenu-desktop --no-generic
 bindsym $mod+Shift+d exec rofi -show run
 
@@ -124,12 +121,6 @@ bar {
 
   bindsym button4 nop
   bindsym button5 nop
-
-#  colors {
-#    statusline #ffffff
-#    background #323232
-#    inactive_workspace #32323200 #32323200 #5c5c5c
-#  }
 }
 
 bindsym XF86AudioMute exec ponymix toggle
@@ -146,13 +137,9 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym Ctrl+Space exec makoctl dismiss
 bindsym Ctrl+Shift+Space exec makoctl dismiss --all
 
-# TODO - grim, wlstream
-#bindsym Print exec scrot -e 'mv $f ~/'
-
 exec mako --font "PxPlus IBM VGA8 12" --width 500 --height 400 --padding 10 --format "%a - %s\n\n%b" --default-timeout 10000
 exec pulseaudio --start
 exec udiskie -a
-#exec blueman-applet
 exec google-chrome-stable --no-startup-window
 
 #exec swayidle \
