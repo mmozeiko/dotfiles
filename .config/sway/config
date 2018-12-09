@@ -19,8 +19,11 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 input "2:14:ETPS/2_Elantech_Touchpad" {
   dwt enabled
   tap disabled
+  click_method clickfinger
+  middle_emulation disabled
   natural_scroll disabled
-  middle_emulation enabled
+  scroll_method two_finger
+  tap_button_map lrm
 }
 
 floating_modifier $mod normal
