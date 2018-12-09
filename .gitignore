@@ -3,17 +3,28 @@
 .gnupg
 .ssh
 .pki
+.rslsync
+.vscode
 
 .bash_history
 .bash_logout
 .bash_profile
 .viminfo
 
-.local/share/applications/chrome-*
-.local/share/icons
-
+.config/unity3d
 .config/google-chrome
 .config/mono.addins
 .config/Pinta
 .config/pulse
+.config/Code
+.config/far2l
+.config/sublime-merge/Cache
+.config/sublime-text-3/Cache
 
+.local/share/applications/chrome-*
+.local/share/icons
+.local/share/unity3d
+
+Downloads
+Sync
+work
