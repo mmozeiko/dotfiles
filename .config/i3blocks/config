@@ -42,6 +42,19 @@ separator_block_width=16
 
 # TODO: show usage in percents
 [memory]
+instance=mem
+command=/usr/lib/i3blocks/memory
+interval=1
+separator=false
+
+[memory]
+full_text=/
+short_text=/
+interval=once
+separator=false
+
+[memory]
+instance=swap
 command=/usr/lib/i3blocks/memory
 interval=1
 separator_block_width=32
