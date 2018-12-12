@@ -5,11 +5,14 @@
 .pki
 .rslsync
 .vscode
+.tor-browser
 
 .bash_history
 .bash_logout
 .bash_profile
 .viminfo
+
+.cmake/packages
 
 .config/unity3d
 .config/google-chrome
@@ -20,6 +23,7 @@
 .config/far2l
 .config/sublime-merge/Cache
 .config/sublime-text-3/Cache
+.config/mpv/watch_later
 
 .local/share/applications/chrome-*
 .local/share/icons
