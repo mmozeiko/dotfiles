@@ -1,0 +1,4 @@
+{
+	"ecc_clang_binary" : "C:/Program Files/LLVM/bin/clang++.exe",
+	"ecc_libclang_path": "C:/Program Files/LLVM/bin/libclang.dll"
+}
