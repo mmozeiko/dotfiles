@@ -81,7 +81,7 @@ separator_block_width=16
 
 [public]
 command=curl -sf http://ifconfig.co
-interval=once
+interval=3600
 separator_block_width=32
 
 
