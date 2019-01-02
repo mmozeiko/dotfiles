@@ -5,9 +5,6 @@
     font:                  "PxPlus IBM VGA8 12";
 }
 
-configuration {
-}
-
 #window {
     anchor:     north;
     location:   north;
