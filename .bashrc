@@ -21,10 +21,10 @@ stty -ixon
 stty -ixoff
 
 if [[ -z ${DISPLAY} ]] && [[ $(tty) = /dev/tty1 ]] && [ -x /usr/bin/sway ]; then
+  #export SDL_VIDEODRIVER=wayland
   #export GDK_BACKEND=wayland
   #export CLUTTER_BACKEND=wayland
   export QT_QPA_PLATFORM=wayland-egl
-  export SDL_VIDEODRIVER=wayland
   export TERMINAL=termite
   export BROWSER=google-chrome-stable
   exec sway
