@@ -27,5 +27,7 @@ if [[ -z ${DISPLAY} ]] && [[ $(tty) = /dev/tty1 ]] && [ -x /usr/bin/sway ]; then
   export QT_QPA_PLATFORM=wayland-egl
   export TERMINAL=termite
   export BROWSER=google-chrome-stable
+  export LIBVA_DRIVER_NAME=iHD
+  export XDG_SESSION_TYPE=wayland
   exec sway
 fi
