@@ -1,6 +1,7 @@
 {
 	"animation_enabled": false,
 	"color_scheme": "Packages/User/Xoria.tmTheme",
+	"dpi_scale": 1.25,
 	"font_face": "PxPlus IBM VGA8",
 	"font_options":
 	[
@@ -8,7 +9,10 @@
 		"no_italic"
 	],
 	"font_size": 12,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"scroll_speed": 0,
-	"tree_animation_enabled": false,
-	"dpi_scale": 1.25
+	"tree_animation_enabled": false
 }
