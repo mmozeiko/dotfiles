@@ -106,6 +106,20 @@ interval=1
 # down f37e
 separator_block_width=32
 
+[usb]
+instance=enp0s20f0u3
+command=echo "$(ip -br addr show ${BLOCK_INSTANCE} | awk '{print $3}' | cut -d/ -f1)"
+interval=10
+separator=false
+separator_block_width=16
+
+[usb#bandwidth]
+instance=enp0s20f0u3
+command=/usr/lib/i3blocks/bandwidth
+interval=1
+# up f381
+# down f37e
+separator_block_width=32
 # TODO: ethernet "\uf321" 
 
 # TODO: vpn "\uf2a8" "\uf2a7" "\uf300"
