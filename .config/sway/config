@@ -141,18 +141,17 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym Ctrl+Space exec makoctl dismiss
 bindsym Ctrl+Shift+Space exec makoctl dismiss --all
 
+bindsym $mod+Escape exec swaylock -c 000000
+
 exec mako --font "PxPlus IBM VGA8 12" --width 500 --height 400 --padding 10 --format "%a - %s\n\n%b" --default-timeout 10000
 exec pulseaudio --start
 exec udiskie -a
 exec google-chrome-stable --no-startup-window
 
-#exec swayidle \
-#    timeout 300 'swaylock -c 000000' \
-#    timeout 600 'swaymsg "output * dpms off"' \
-#       resume 'swaymsg "output * dpms on"' \
-#    before-sleep 'swaylock -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
+exec swayidle -w \
+    timeout 300 'swaylock -c 000000' \
+    timeout 330 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 30 'if pgrep swaylock; then swaymsg "output * dpms off"; fi' \
+    resume 'if pgrep swaylock; then swaymsg "output * dpms on"; fi' \
+    before-sleep 'swaylock -c 000000'
