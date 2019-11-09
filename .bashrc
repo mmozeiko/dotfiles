@@ -11,7 +11,7 @@ export HISTFILESIZE=
 export PROMPT_COMMAND="history -a;"
 export HISTCONTROL=ignoreboth:erasedups
 
-export PATH=${HOME}/.local/bin:${PATH}
+export PATH=${HOME}/.local/bin:/opt/android-sdk/platform-tools:${PATH}
 
 shopt -s histappend
 

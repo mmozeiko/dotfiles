@@ -9,17 +9,16 @@ separator=false
 separator_block_width=16
 
 [cpu-usage]
-command=/usr/lib/i3blocks/cpu_usage
-interval=5
+command=/usr/lib/i3blocks/cpu_usage/cpu_usage
+Rinterval=5
 separator=false
 separator_block_width=16
 
 # f38f f3b3
 [cpu-usage]
-command=/usr/lib/i3blocks/load_average
+command=/usr/lib/i3blocks/load_average/load_average
 interval=5
 separator_block_width=32
-
 
 [cpu-temp#icon]
 command=echo -e "\uf3b6"
@@ -28,7 +27,7 @@ separator=false
 separator_block_width=16
 
 [cpu-temp]
-command=/usr/lib/i3blocks/temperature -w 50 -c 70
+command=/usr/lib/i3blocks/temperature/temperature -w 50 -c 70
 interval=10
 separator_block_width=32
 
@@ -40,24 +39,24 @@ interval=once
 separator=false
 separator_block_width=16
 
-# TODO: show usage in percents
 [memory]
 instance=mem
-command=/usr/lib/i3blocks/memory
-interval=1
-separator=false
-
-[memory]
-full_text=/
-short_text=/
-interval=once
-separator=false
-
-[memory]
-instance=swap
-command=/usr/lib/i3blocks/memory
+command=/usr/lib/i3blocks/memory/memory
 interval=1
 separator_block_width=32
+#separator=false
+
+#[memory]
+#full_text=/
+#short_text=/
+#interval=once
+#separator=false
+
+#[memory]
+#instance=swap
+#command=/usr/lib/i3blocks/memory/memory
+#interval=1
+#separator_block_width=32
 
 
 [disk#icon]
@@ -68,11 +67,12 @@ separator_block_width=16
 
 [disk]
 instance=/
-command=/usr/lib/i3blocks/disk
+command=/usr/lib/i3blocks/disk/disk
 interval=10
 separator_block_width=32
 
 # TODO: NVMe temperature - sudo nvme smart-log /dev/nvme0 | grep "^temperature"
+
 [public#icon]
 command=echo -e "\uf3df" # f3df
 interval=once
@@ -84,7 +84,6 @@ command=curl -sf http://ifconfig.co
 interval=3600
 separator_block_width=32
 
-
 [wifi#icon]
 command=echo -e "\uf35c" # f3745
 interval=once
@@ -92,15 +91,15 @@ separator=false
 separator_block_width=16
 
 [wifi]
-instance=wlp3s0
-command=echo "$(ip -br addr show ${BLOCK_INSTANCE} | awk '{print $3}' | cut -d/ -f1) (`iwgetid -r ${BLOCK_INSTANCE}`)"
+instance=wlan0
+command=echo "$(ip -br addr show ${BLOCK_INSTANCE} | awk '{print $3}' | cut -d/ -f1) (`iw dev ${BLOCK_INSTANCE} link | awk '/SSID/{print $2}'`)"
 interval=10
 separator=false
 separator_block_width=16
 
 [wifi#bandwidth]
-instance=wlp3s0
-command=/usr/lib/i3blocks/bandwidth
+instance=wlan0
+command=~/.config/i3blocks/bandwidth
 interval=1
 # up f381
 # down f37e
@@ -115,7 +114,7 @@ separator_block_width=16
 
 [usb#bandwidth]
 instance=enp0s20f0u3
-command=/usr/lib/i3blocks/bandwidth
+command=~/.config/i3blocks/bandwidth
 interval=1
 # up f381
 # down f37e
@@ -137,7 +136,6 @@ command=~/.local/bin/btc.sh
 interval=300
 separator_block_width=32
 
-
 [eth#icon]
 command=echo -e "\u039E"
 interval=once
@@ -149,12 +147,10 @@ command=~/.local/bin/eth.sh
 interval=300
 separator_block_width=32
 
-
 [pacman]
 command=echo "pkg `checkupdates | wc -l`"
 interval=3600
 separator_block_width=32
-
 
 # charging: \uf211
 # empty: \uf212
@@ -168,10 +164,9 @@ separator=false
 separator_block_width=16
 
 [battery]
-command=/usr/lib/i3blocks/battery
+command=/usr/lib/i3blocks/battery/battery
 interval=60
 separator_block_width=32
-
 
 # max = f357
 # mid = f359
@@ -187,7 +182,6 @@ separator_block_width=16
 command=ponymix is-muted && echo "muted" || ponymix get-volume
 interval=1
 separator_block_width=32
-
 
 [clock]
 command=date +"%a, %b %d %Y %H:%M:%S"
